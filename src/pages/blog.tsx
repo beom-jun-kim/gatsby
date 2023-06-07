@@ -1,6 +1,29 @@
 import React from "react";
+import Layout from "../components/Layout";
+import Seo from "../components/Seo";
+import { PageProps, graphql } from "gatsby";
 
-function Blog() {
-  return <h1>hello!</h1>;
+// // 밑에 선언한 query명(BlogTitle)으로 타입이 자동완성(BlogTitlesQuery)
+export default function Blog({ data }: PageProps<Queries.BlogTitlesQuery>) {
+  return (
+    <Layout title="title : Blog">
+      <ul>
+        {data.allFile.nodes.map((file, index) => (
+          <li key={index}>{file.name}</li>
+        ))}
+      </ul>
+    </Layout>
+  );
 }
-export default Blog;
+
+export const query = graphql`
+  query BlogTitles {
+    allFile {
+      nodes {
+        name
+      }
+    }
+  }
+`;
+
+export const Head = () => <Seo title="Blog" />;
