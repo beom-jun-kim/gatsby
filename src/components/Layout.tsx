@@ -6,6 +6,7 @@ interface ILayoutProp {
   title: string;
 }
 
+// children : 하위 컴포넌트로 전달
 export default function Layout({ children, title }: ILayoutProp) {
   return (
     <div>

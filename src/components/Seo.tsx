@@ -7,7 +7,7 @@ interface ISeoProp {
 
 export default function Seo({ title }: ISeoProp) {
 
-  // 밑에 선언한 query명(MyQuery)으로 타입이 자동완성(MyQueryQuery)
+  // 밑에 선언한 query명(MyQuery)으로 타입 자동완성(MyQueryQuery)
   const data = useStaticQuery<Queries.MyQueryQuery>(graphql`
     query MyQuery {
       site {

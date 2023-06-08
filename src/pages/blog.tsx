@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import Seo from "../components/Seo";
 import { PageProps, graphql } from "gatsby";
 
-// // 밑에 선언한 query명(BlogTitle)으로 타입이 자동완성(BlogTitlesQuery)
+// 밑에 선언한 query명(BlogTitle)으로 타입 자동완성(BlogTitlesQuery)
 export default function Blog({ data }: PageProps<Queries.BlogTitlesQuery>) {
   return (
     <Layout title="title : Blog">
