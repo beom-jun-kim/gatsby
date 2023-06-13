@@ -16,8 +16,8 @@ export default function Blog({ data }: PageProps<Queries.BlogPostQuery>) {
               <h1>{file.frontmatter?.category}</h1>
               <h1>{file.frontmatter?.data}</h1>
               <h1>{file.frontmatter?.name}</h1>
-              <hr />
               <h1>{file.excerpt}</h1>
+              <hr />
             </Link>
           </article>
         ))}
