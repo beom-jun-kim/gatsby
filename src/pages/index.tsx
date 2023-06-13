@@ -1,22 +1,39 @@
 import * as React from "react";
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
-import { StaticImage } from "gatsby-plugin-image";
+import { PageProps, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-export default function IndexPage() {
+export default function IndexPage({ data }: PageProps<Queries.StickersQuery>) {
   return (
     <Layout title="title : hello world!">
-
-      {/* .webp 형식으로 전환 */}
-      {/* 서버를 kill하고 재시작 */}
-      <StaticImage
-        height={500}
-        src="https://cdn.pixabay.com/photo/2022/06/30/13/32/family-7293705_1280.png"
-        alt="대문이미지"
-      />
+      {data.allcontentfulStickerPack.nodes.map((stickers) => (
+        <article>
+          <GatsbyImage
+            image={getImage(stickers.preview?.gatsbyImageData)!}
+            alt={stickers.name}
+          />
+          <h3>{stickers.name}</h3>
+          <h4>{stickers.price}</h4>
+        </article>
+      ))}
     </Layout>
   );
 }
+
+export const query = graphql`
+  query Stickers {
+    allContentfulStickerPack {
+      nodes {
+        name
+        price
+        preview {
+          gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+    }
+  }
+`;
 
 // Head 컴포넌트를 export하면 웹사이트 head 즉 title에 들어가게 된다
 export const Head = () => <Seo title="Home" />;
