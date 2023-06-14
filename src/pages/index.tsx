@@ -3,7 +3,6 @@ import Layout from "../components/Layout";
 import Seo from "../components/Seo";
 import { PageProps, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Link } from "react-router-dom";
 
 export default function IndexPage({ data }: PageProps<Queries.StickersQuery>) {
   return (
@@ -15,7 +14,7 @@ export default function IndexPage({ data }: PageProps<Queries.StickersQuery>) {
               image={getImage(stickers.preview?.gatsbyImageData!)!}
               alt={stickers.name!}
             />
-            <a href={`/products/${stickers.id}`}>
+            <a href={`/product/${stickers.id}`}>
               <h3>{stickers.name}</h3>
               <h4>{stickers.price}</h4>
             </a>

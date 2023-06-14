@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../../components/Layout";
 import Seo from "../../components/Seo";
-import { PageProps, graphql, Link } from "gatsby";
+import { PageProps, graphql} from "gatsby";
 
 // 밑에 선언한 query명(BlogTitle)으로 타입 자동완성(BlogTitlesQuery)
 // Queries로 네임스페이스 사용
