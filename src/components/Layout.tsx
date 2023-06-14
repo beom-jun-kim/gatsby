@@ -9,17 +9,17 @@ interface ILayoutProp {
 // children : 하위 컴포넌트로 전달
 export default function Layout({ children, title }: ILayoutProp) {
   return (
-    <div>
+    <div className="container">
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <a href="/">Home</a>
           </li>
           <li>
-            <Link to="/about-us">About Us</Link>
+            <a href="/about-us">About Us</a>
           </li>
           <li>
-            <Link to="/blog">Blog</Link>
+            <a href="/blog">Blog</a>
           </li>
         </ul>
       </nav>

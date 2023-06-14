@@ -3,20 +3,25 @@ import Layout from "../components/Layout";
 import Seo from "../components/Seo";
 import { PageProps, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { Link } from "react-router-dom";
 
 export default function IndexPage({ data }: PageProps<Queries.StickersQuery>) {
   return (
     <Layout title="title : hello world!">
-      {data.allcontentfulStickerPack.nodes.map((stickers) => (
-        <article>
-          <GatsbyImage
-            image={getImage(stickers.preview?.gatsbyImageData)!}
-            alt={stickers.name}
-          />
-          <h3>{stickers.name}</h3>
-          <h4>{stickers.price}</h4>
-        </article>
-      ))}
+      <div className="grid">
+        {data.allContentfulStickerPack.nodes.map((stickers) => (
+          <article>
+            <GatsbyImage
+              image={getImage(stickers.preview?.gatsbyImageData!)!}
+              alt={stickers.name!}
+            />
+            <a href={`/products/${stickers.id}`}>
+              <h3>{stickers.name}</h3>
+              <h4>{stickers.price}</h4>
+            </a>
+          </article>
+        ))}
+      </div>
     </Layout>
   );
 }
@@ -25,6 +30,7 @@ export const query = graphql`
   query Stickers {
     allContentfulStickerPack {
       nodes {
+        id
         name
         price
         preview {

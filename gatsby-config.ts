@@ -1,5 +1,5 @@
-import type { GatsbyConfig } from "gatsby";
 require("dotenv").config();
+import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -14,10 +14,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `gxx9049028zy`,
-        // Learn about environment variables: https://gatsby.dev/env-vars
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        host: `preview.contentful.com`,
       },
     },
     `gatsby-plugin-mdx`,
